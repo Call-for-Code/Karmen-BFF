@@ -1,0 +1,44 @@
+{
+  // Settings
+  "esversion": 6,
+  "globalstrict": true,
+  "maxparams": 5,
+  "maxdepth": 5,
+  "maxstatements": 25,
+  "maxcomplexity": 6,
+  "boss"          : true,  // Tolerate assignments inside if, for & while. Usually conditions & loops are for comparison, not assignments.
+  "curly"         : false, // Require curly brackets for every new block or scope.
+  "eqeqeq"        : true,  // Require triple equals i.e. `===`.
+  "eqnull"        : true,  // Tolerate use of `== null`.
+  "latedef"       : false, // Prohibit variable use before definition.
+  "loopfunc"      : false, // Allow functions to be defined within loops.
+  "undef"         : false, // Require all non-global variables be declared before they are used.
+
+   // Predefined globals whom JSHint will ignore.
+  "browser" : true,
+  "node"    : true,
+
+
+  //Custom Globals
+  "predef"        : [
+    "chrome",
+    "console"
+  ],
+
+  // Development.
+  "debug"         : false, // Allow debugger statements e.g. browser breakpoints.
+  "devel"         : false, // Allow developments statements e.g. `console.log();`.
+
+  //specify a white list of global variables that are not formally defined in the source code
+  "globals": {
+        "$": false,
+        "require": false
+    },
+
+
+    // Personal styling prefrences
+    "nomen"         : false, // Prohibit use of initial or trailing underbars in names.
+    "sub"           : false, // Tolerate all forms of subscript notation besides dot notation e.g. `dict['key']` instead of `dict.key`.
+    "trailing"      : true,  // Prohibit trailing whitespaces.
+    "white"         : false  // Check against strict whitespace and indentation rules.
+}

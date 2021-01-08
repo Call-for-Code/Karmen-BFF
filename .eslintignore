@@ -1,0 +1,11 @@
+node_modules
+gulp
+src/bower_components
+coverage
+src/js/vendors
+lib
+libs
+public/js/demo.js
+test
+src/js/watson-speech
+dist

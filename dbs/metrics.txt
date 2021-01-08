@@ -1,0 +1,58 @@
+[
+  {
+    "_id": "_design/be7d4097eac9af1b2e10bea616c7d58272740d47",
+    "_rev": "1-1d0de28b7ee5ae67e613b1c3fa1092a0",
+    "language": "query",
+    "views": {
+      "timestamp-json-index": {
+        "map": {
+          "fields": {
+            "timestamp": "asc"
+          },
+          "partial_filter_selector": {
+            
+          }
+        },
+        "reduce": "_count",
+        "options": {
+          "def": {
+            "fields": [
+              "timestamp"
+            ]
+          }
+        }
+      }
+    },
+    "_revisions": {
+      "start": 1,
+      "ids": [
+        "1d0de28b7ee5ae67e613b1c3fa1092a0"
+      ]
+    }
+  },
+  {
+    "_id": "_design/metricsIndexes",
+    "_rev": "23-6c9f7362aca0116f62c9b2272d64e1f7",
+    "views": {
+      "analysisType_className": {
+        "reduce": "_count",
+        "map": "function (doc) {\n  emit([{analysisType:doc.analysisType}, {class_name:doc.classifierResult.class_name}] , 1);\n}"
+      },
+      "class_name_count": {
+        "reduce": "_count",
+        "map": "function (doc) {\n  emit(doc.classifierResult.class_name, 1);\n}"
+      },
+      "analysisType_count": {
+        "reduce": "_count",
+        "map": "function (doc) {\n  emit(doc.analysisType, 1);\n}"
+      },
+      "xfeAnalyzedURLs_sum": {
+        "reduce": "_sum",
+        "map": "function (doc) {\n  if (doc.xfeNumAnalyzed.urls){\n    emit( \"xfeNumAnalyzed.urls\",doc.xfeNumAnalyzed.urls);\n  }\n}"
+      },
+      "xfeAnalyzedIPs_sum": {
+        "reduce": "_sum",
+        "map": "function (doc) {\n  if (doc.xfeNumAnalyzed.ips){\n    emit( \"xfeNumAnalyzed.ips\",doc.xfeNumAnalyzed.ips);\n  }\n}"
+      }
+    },
+]

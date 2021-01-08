@@ -1,0 +1,9 @@
+---
+applications:
+ - name: isitspam-bff
+   random-route: true
+   memory: 256M
+   language: nodejs
+   default_versions:
+    - name: node
+      version: 10.x

@@ -1,0 +1,262 @@
+swagger: "2.0"
+info:
+  version: "0.0.1"
+  title: Hello World App
+# during dev, should point to your local machine
+host: localhost:10010
+# basePath prefixes all resource paths 
+basePath: /
+# 
+schemes:
+  # tip: remove http to make production-grade
+  - http
+  - https
+# format of bodies a client can send (Content-Type)
+consumes:
+  - application/json
+# format of the responses to the client (Accepts)
+produces:
+  - application/json
+paths:
+  /hello:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: hello_world
+    get:
+      description: Returns 'Hello' to the caller
+      # used as the method name of the controller
+      operationId: hello
+      parameters:
+        - name: name
+          in: query
+          description: The name of the person to whom to say hello
+          required: false
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/HelloWorldResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /analyzeSMS:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: sms
+    post:
+      description: Returns analysis of email body
+      # used as the method name of the controller
+      operationId: analyzeSMS
+      parameters:
+        - name: text
+          in: body
+          description: The name of the person to whom to say hello
+          required: true
+          schema:
+            type: object
+            properties:
+              body:
+                type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/AnalyzeSMSResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /analyzeEmail:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: email
+    post:
+      description: Returns analysis of email body
+      # used as the method name of the controller
+      operationId: analyzeEmail
+      parameters:
+        - name: text
+          in: body
+          description: The name of the person to whom to say hello
+          required: true
+          schema:
+            type: object
+            properties:
+              body:
+                type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/AnalyzeEmailResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /analyzeFakeNews:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: fakeNews
+    post:
+      description: Returns analysis of email body
+      # used as the method name of the controller
+      operationId: analyzeFakeNews
+      parameters:
+        - name: text
+          in: body
+          description: The name of the person to whom to say hello
+          required: true
+          schema:
+            type: object
+            properties:
+              body:
+                type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/AnalyzeFakeNewsResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /analyzeFakeNewsURL:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: fakeNews
+    post:
+      description: Returns analysis of email body
+      # used as the method name of the controller
+      operationId: analyzeFakeNewsURL
+      parameters:
+        - name: url
+          in: body
+          description: The name of the person to whom to say hello
+          required: true
+          schema:
+            type: object
+            properties:
+                url:
+                  type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/AnalyzeFakeNewsResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /whoWeAre:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: whoWeAre
+    get:
+      description: Returns analysis of email body
+      # used as the method name of the controller
+      operationId: getWhoWeAre
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/WhoWeAreResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /securityTip:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: securityTip
+    get:
+      description: Returns analysis of email body
+      # used as the method name of the controller
+      operationId: getSecurityTip
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/SecurityTipResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /metrics:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: metrics
+    get:
+      description: Returns analysis of email body
+      # used as the method name of the controller
+      operationId: getMetrics
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/MetricsResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /swagger:
+    x-swagger-pipe: swagger_raw
+# complex objects have schema definitions
+definitions:
+  HelloWorldResponse:
+    required:
+      - message
+    properties:
+      message:
+        type: string
+  AnalyzeSMSResponse:
+    required:
+      - message
+    properties:
+      message:
+        type: object
+  AnalyzeEmailResponse:
+    required:
+      - message
+    properties:
+      message:
+        type: object
+  AnalyzeFakeNewsResponse:
+    required:
+      - message
+    properties:
+      message:
+        type: object
+  MetricsResponse:
+    required:
+      - message
+    properties:
+      message:
+        type: object
+  SecurityTipResponse:
+    required:
+      - message
+    properties:
+      message:
+        type: string
+  WhoWeAreResponse:
+    required:
+      - message
+    properties:
+      message:
+        type: string
+  ErrorResponse:
+    required:
+      - message
+    properties:
+      message:
+        type: string
