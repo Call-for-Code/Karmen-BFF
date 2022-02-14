@@ -17,7 +17,7 @@
     },
     "dependencies": {
         "@cloudant/cloudant": "^4.2.4",
-        "axios": "^0.21.1",
+        "axios": "^0.21.2",
         "axios-retry": "^3.1.8",
         "btoa": "^1.2.1",
         "cfenv": "^1.2.2",
