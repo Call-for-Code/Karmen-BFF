@@ -21,7 +21,7 @@
         "axios-retry": "^3.1.8",
         "btoa": "^1.2.1",
         "cfenv": "^1.2.2",
-        "cheerio": "^1.0.0-rc.3",
+        "cheerio": "^1.0.0-rc.12",
         "debug": "^4.1.1",
         "express": "^4.12.3",
         "log": "^6.0.0",
@@ -29,7 +29,7 @@
         "swagger-express-mw": "^0.7.0",
         "tall": "^3.1.0",
         "url": "^0.11.0",
-        "url-unshort": "^5.0.0",
+        "url-unshort": "^6.1.0",
         "lodash": ">=4.17.19"
     },
     "devDependencies": {
